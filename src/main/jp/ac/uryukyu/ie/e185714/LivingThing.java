@@ -15,6 +15,11 @@ public class LivingThing {
         System.out.printf("%sのHPは%d。攻撃力は%dです。\n", name, maximumHP, attack);
     }
 
+    /**
+     * getterメソッドと同等。生死をboolean表現しているためメソッド名をisDead()とした。
+     * @return boolean
+     */
+    
     public boolean isDead() {
         return dead;
     }
