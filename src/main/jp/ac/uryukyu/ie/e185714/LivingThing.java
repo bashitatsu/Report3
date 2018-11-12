@@ -5,20 +5,17 @@ public class LivingThing {
     private int hitPoint;
     private int attack;
     private boolean dead;
+    private int exp;
 
 
-    public LivingThing (String name, int maximumHP, int attack) {
+    public LivingThing (String name, int maximumHP, int attack, int exp) {
         this.name = name;
         this.hitPoint = maximumHP;
         this.attack = attack;
         dead = false;
+        this.exp = exp;
         System.out.printf("%sのHPは%d。攻撃力は%dです。\n", name, maximumHP, attack);
     }
-
-    /**
-     * getterメソッドと同等。生死をboolean表現しているためメソッド名をisDead()とした。
-     * @return boolean
-     */
 
     //name
     public String getName(){
@@ -47,6 +44,15 @@ public class LivingThing {
         this.attack = attack;
     }
 
+    //exp
+    public int getExp(){
+        return exp;
+    }
+
+    public void setExp(int exp){
+        this.exp = exp;
+    }
+
     //dead
     public boolean isDead() {
         return dead;
@@ -57,9 +63,13 @@ public class LivingThing {
     }
 
     public void attack(LivingThing opponent){
-        if (!isDead()) {
+        if ( !isDead() ) {
             int damage = (int) (Math.random() * attack);
-            System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, opponent.getName(), damage);
+            if ( damage == (attack - 1) ){
+                System.out.printf("%sの攻撃がクリティカルヒット！%sに%dのダメージを与えた！！\n", name, opponent.getName(), damage);
+            }else{
+                System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, opponent.getName(), damage);
+            }
             opponent.wounded(damage);
         }
     }

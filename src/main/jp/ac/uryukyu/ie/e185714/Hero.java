@@ -3,15 +3,9 @@ package jp.ac.uryukyu.ie.e185714;
 
 public class Hero extends LivingThing {
 
-    public Hero (String name, int maximumHP, int attack) {
-        super(name, maximumHP, attack);
+    public Hero (String name, int maximumHP, int attack, int exp) {
+        super(name, maximumHP, attack, exp);
     }
-
-    /**
-     * 自身へ攻撃されたときのダメージ処理をするメソッド。
-     * 指定されたダメージを hitPoint から引き、死亡判定を行う。
-     * @param damage 受けたダメージ
-     */
 
     //@override
     public void wounded(int damage){
